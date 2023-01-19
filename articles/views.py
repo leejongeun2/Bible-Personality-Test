@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'articles/index.html', context)
 
 def result(request):
-    mbti = Mbti().alphabet
+    mbti = Mbti.objects.get(id=1).alphabet
     
     first = {}
     second = {}
@@ -17,19 +17,24 @@ def result(request):
     
     first['I'] = mbti.count('I')
     first['E'] = mbti.count('E')
-    result += max(first.keys())
+    key = max(first, key=first.get)
+    result += key
     
     second['S'] = mbti.count('S')
     second['N'] = mbti.count('N')
-    result += max(second.keys())
+    key = max(second, key=second.get)
+    result += key
     
     third['T'] = mbti.count('T')
     third['F'] = mbti.count('F')
-    result += max(third.keys())
+    key = max(third, key=third.get)
+    result += key
 
     fourth['P'] = mbti.count('P')
     fourth['J'] = mbti.count('J')
-    result += max(fourth.keys())
+    key = max(fourth, key=fourth.get)
+    result += key
+
     
     context = {
         'result': result,
