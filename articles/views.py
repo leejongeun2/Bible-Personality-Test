@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'articles/index.html', context)
 
 def result(request):
-    mbti = Mbti.objects.get(id=1).alphabet
+    mbti = Mbti.objects.get(id=1).alphabet # model에서 id=1 alphabet 컬럼에서 데이터 가져오기(ex:'IEESSNTTFJPP')
     
     first = {}
     second = {}
@@ -15,10 +15,10 @@ def result(request):
     fourth = {}
     result = ''
     
-    first['I'] = mbti.count('I')
-    first['E'] = mbti.count('E')
-    key = max(first, key=first.get)
-    result += key
+    first['I'] = mbti.count('I') # first['I'] == key / mbti.count('I') == value / ex: {'I': 1, 'E': 2}
+    first['E'] = mbti.count('E') # first['E'] == key / mbti.count('E') == value / ex: {'I': 1, 'E': 2}
+    key = max(first, key=first.get) # key = max(dict_name, key=dict_name.get)
+    result += key # result += max_value를 가지는 key(ex: 'E')
     
     second['S'] = mbti.count('S')
     second['N'] = mbti.count('N')
