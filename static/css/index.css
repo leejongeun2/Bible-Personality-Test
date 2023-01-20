@@ -1,0 +1,18 @@
+* {
+    background-color: #F8F6F3;
+}
+.title-highlight {
+    color: #B70048;
+}
+.index-img {
+    width: 40%;
+    height: auto;
+    border-radius: 30px;
+}
+.index-btn {
+    background-color: black;
+    color: white;
+    width: 40%;
+    height: 4rem;
+    border-radius: 30px;
+}

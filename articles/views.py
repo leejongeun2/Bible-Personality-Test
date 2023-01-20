@@ -6,6 +6,9 @@ def index(request):
     context = {}
     return render(request, 'articles/index.html', context)
 
+def question(request):
+    return render(request, 'articles/question.html')
+
 def result(request):
     mbti = Mbti.objects.get(id=1).alphabet # model에서 id=1 alphabet 컬럼에서 데이터 가져오기(ex:'IEESSNTTFJPP')
     
