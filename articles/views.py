@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Mbti
+from django.shortcuts import render, redirect
+from .models import Mbti, Type
 
 # Create your views here.
 def index(request):
@@ -11,6 +11,7 @@ def question(request):
 
 def result(request):
     mbti = Mbti.objects.get(id=1).alphabet # model에서 id=1 alphabet 컬럼에서 데이터 가져오기(ex:'IEESSNTTFJPP')
+    types = Type.objects.all()
     
     first = {}
     second = {}
@@ -37,10 +38,15 @@ def result(request):
     fourth['J'] = mbti.count('J')
     key = max(fourth, key=fourth.get)
     result += key
-
+    
+    for type in types:
+        if type.mbti == result:
+            result_type = Type.objects.get(mbti=type.mbti)
+            break
     
     context = {
-        'result': result,
+        # 'result': result,
+        'result_type': result_type,
     }
     
     return render(request, 'articles/result.html', context)

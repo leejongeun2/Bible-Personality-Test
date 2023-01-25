@@ -1,4 +1,3 @@
-
 const main = document.querySelector("#main"); 
 const qna = document.querySelector("#qna");
 const result = document.querySelector('#result');
@@ -64,7 +63,7 @@ function addAnswer(answerText, qIdx, idx){
 }
 
 function goNext(qIdx){
-    if(qIdx+1 === endPoint){
+    if(qIdx + 1 === endPoint){ 
         goResult();
         return;
     }
