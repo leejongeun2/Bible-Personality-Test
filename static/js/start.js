@@ -27,13 +27,25 @@ function calResult(){
     ]
 
     for(let i = 0; i < endPoint; i++){ //문제 수
-        var target = qnaList[i].a[select[i]]; //특정 문제의 답변에 선택한 답변 ex)1,0,1,0중 1번문제에 대한 답숫자
+        var target = qnaList[i].a[select[i]]; //특정 문제의 답변에 선택한 값 ex)1,0,1,0중 1번문제에 대한 답숫자
         for(let k = 0; k < pointArray.length; k++){
             if(target.type[0] === pointArray[k].name){
                 pointArray[k].value += 1;
             }
         }
         }
+        var resultArray = pointArray.sort(function(a, b){
+            if(a.value > b.value){
+                return -1;
+            }
+            if(a.value < b.value){
+                return 1;
+            }
+            return 0;
+        });
+        console.log(resultArray)
+        let resultword = resultArray[0].name;
+        return resultword;
     }
 
 
@@ -41,7 +53,8 @@ function calResult(){
 function goResult(){
     qna.style.display = "none";
     result.style.display = "block";
-    console.log(select);
+    // console.log(select);
+    calResult();
 
 }
 
@@ -64,7 +77,7 @@ function addAnswer(answerText, qIdx, idx){
 }
 
 function goNext(qIdx){
-    if(qIdx+1 === endPoint){
+    if(qIdx === endPoint){
         goResult();
         return;
     }
