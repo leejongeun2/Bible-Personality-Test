@@ -1,4 +1,3 @@
-
 const main = document.querySelector("#main"); 
 const qna = document.querySelector("#qna");
 const result = document.querySelector('#result');

@@ -17,7 +17,7 @@ class Mbti(models.Model):
 
 # 인물 모델
 class Type(models.Model):
-    person = models.CharField(max_length=100) 
+    person = models.CharField(max_length=100)
     verse = models.TextField(max_length=100)
     mbti =  models.CharField(max_length=100)
     
