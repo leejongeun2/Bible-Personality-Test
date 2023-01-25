@@ -16,3 +16,11 @@
     height: 4rem;
     border-radius: 30px;
 }
+
+#qna{
+    display: none;
+}
+
+#result{
+    display: none;
+}
