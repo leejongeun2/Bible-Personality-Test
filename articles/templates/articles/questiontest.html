@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div>
+    <div id="question-{{question.pk}}">{{ question.question }}</div>
+    <button type="submit" id="choice" value="{{question.pk}}">{{ question.answer1 }}</button>
+    <button type="submit" id="choice" value="{{question.pk}}">{{ question.answer2 }}</button>
+  </div>
+  <script>
+    $('#choice').click(function () {
+      var pk = $(this).value
+      pk += 1
+      $.ajax({
+        url: '/ajax/nextPage/',
+        type: "POST",
+        dataType: "json",
+        data: {
+          'pk': pk
+        },
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (request, status, error) {
+          console.log('failed');
+        }
+      });
+    })
+  </script>
+{% endblock content %}
