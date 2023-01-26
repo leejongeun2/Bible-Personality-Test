@@ -1,13 +1,50 @@
-from django.shortcuts import render, redirect
-from .models import Mbti, Type
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from .models import Mbti, Type, Question
+
 
 # Create your views here.
 def index(request):
     context = {}
     return render(request, 'articles/index.html', context)
 
+# @csrf_exempt
+# def question(request):
+#     received_message = request.POST.get('') 
+#     send_message = {'send_data' : 'I received'}
+#     return JsonResponse(send_message)
+
+@csrf_exempt
 def question(request):
-    return render(request, 'articles/question.html')
+    question = Question.objects.get(pk=1)
+    # pk = request.POST.get('pk')
+    # # for question in question_list:
+    # #     pk = question.pk
+    # #     question_pk = request.POST.get('pk', None)
+    
+    # # try:
+    # question = get_object_or_404(Question, pk=pk)
+    # context = {
+    #     'question': question,
+    # }
+    # return JsonResponse(context)
+    context = {
+        'question': question,
+    }
+    return render(request, 'articles/questiontest.html', context)
+
+    # except:
+        # return render(request, 'articles/result.html')
+        
+@csrf_exempt
+def nextPage(request):
+    pk = request.POST.get('pk', None)
+    question = Question.objects.get(pk=pk)
+    data = {
+        'data': question,
+    }
+    return JsonResponse(data)
 
 def result(request):
     mbti = Mbti.objects.get(id=1).alphabet # model에서 id=1 alphabet 컬럼에서 데이터 가져오기(ex:'IEESSNTTFJPP')
