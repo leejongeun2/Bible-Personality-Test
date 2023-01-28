@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .models import Mbti, Type, Question
-
+from django.core import serializers
 
 # Create your views here.
 def index(request):
@@ -30,7 +30,10 @@ def question(request):
     # }
     # return JsonResponse(context)
     context = {
-        'question': question,
+        'question_pk': question.pk,
+        'question': question.question,
+        'question_ans1': question.answer1,
+        'question_ans2': question.answer2,
     }
     return render(request, 'articles/questiontest.html', context)
 
@@ -39,10 +42,15 @@ def question(request):
         
 @csrf_exempt
 def nextPage(request):
-    pk = request.POST.get('pk', None)
+    pk = request.POST.get('pk')
+    pk=1
+    pk = int(pk) + 1
     question = Question.objects.get(pk=pk)
     data = {
-        'data': question,
+        'question_pk': question.pk,
+        'question': question.question,
+        'question_ans1': question.answer1,
+        'question_ans2': question.answer2,
     }
     return JsonResponse(data)
 
