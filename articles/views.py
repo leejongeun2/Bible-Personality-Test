@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .models import Type, Question
 
+
 # Create your views here.
 def index(request):
     context = {}

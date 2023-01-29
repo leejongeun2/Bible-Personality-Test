@@ -9,7 +9,7 @@
         성경 인물 테스트</h1>
       <img class="index-img my-2" src="{% static 'images/index_img.png' %}" alt="index page img">
       <div>
-        <button class="index-btn my-5" type="button" onclick="js:begin()">시작하기</button>
+        <button class="index-btn my-5" type="button" onclick="location.href='{% url 'articles:question' %}'">시작하기</button>
       </div>
     </div>
   </section>
@@ -20,20 +20,8 @@
     <div class="qBox"></div>
     <div class="answerBox"></div>
   </section>
-  <section id="result">
-    <div class="d-flex row text-center justify-content-center">
-      <h1 class="index-title my-5">당신의
-        <span class="title-highlight">결과</span>
-        는?</h1>
-      <div class="resultname"></div>
-      <img class="index-img my-2" src="{% static 'images/index_img.png' %}" alt="index page img">
-      <div class="resultDesc"></div>
-      <div>
-        <button class="index-btn my-5" type="button">공유하기</button>
-      </div>
-    </div>
-  </section>
-
+  
+{% comment %} 
   <script src="{% static 'js/data.js' %}"></script>
-  <script src="{% static 'js/start.js' %}"></script>
+  <script src="{% static 'js/start.js' %}"></script> {% endcomment %}
 {% endblock content %}

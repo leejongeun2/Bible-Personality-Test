@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-  {{result_type.person}}
-  {{result_type.mbti}}
-  {{result_type.verse}}
+<section id="result">
+  <div class="d-flex row text-center justify-content-center">
+    <h1 class="index-title my-5">당신의
+      <span class="title-highlight">결과</span>
+      는?</h1>
+    <div class="resultname">{{result_type.person}}</div>
+    <div class="resultmbti">{{result_type.mbti}}</div>
+    <img class="index-img my-2" src="{% static 'images/index_img.png' %}" alt="index page img">
+    <div class="resultDesc">{{result_type.verse}}</div>
+    <div>
+      <button class="index-btn my-5" type="button">공유하기</button>
+    </div>
+  </div>
+</section>
+    
 {% endblock content %}
