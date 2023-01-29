@@ -1,29 +1,58 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %} {% endcomment %}
 {% load static %}
 {% block content %}
-  <div>
-    <div id="question-{{question.pk}}">{{ question.question }}</div>
-    <button type="submit" id="choice" value="{{question.pk}}">{{ question.answer1 }}</button>
-    <button type="submit" id="choice" value="{{question.pk}}">{{ question.answer2 }}</button>
+  <div class="container text-center">
+    <div id="question">{{ question }}</div>
+    <button type="button" class="choice" id="choice1" data-letter="{{ question_letter1 }}" data-mbti="{{ mbti }}" data-value="{{ question_pk }}">{{ question_ans1 }}</button>
+    <button type="button" class="choice" id="choice2" data-letter="{{ question_letter2 }}" data-mbti="{{ mbti }}" data-value="{{ question_pk }}">{{ question_ans2 }}</button>
   </div>
-  <script>
-    $('#choice').click(function () {
-      var pk = $(this).value
-      pk += 1
-      $.ajax({
-        url: '/ajax/nextPage/',
-        type: "POST",
-        dataType: "json",
-        data: {
-          'pk': pk
-        },
-        success: function (data) {
-          console.log(data);
-        },
-        error: function (request, status, error) {
-          console.log('failed');
-        }
-      });
-    })
-  </script>
 {% endblock content %}
+{% comment %} <script src="{% static 'js/test.js' %}"></script> {% endcomment %}
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+<script>
+  $('.choice').click(function (event) {
+    var chosenId = event.target.id
+    //console.log(chosenId)
+    var pk = $(`#${chosenId}`).data('value')
+    if (pk == 11){
+      $('button').click(function(){
+        $('.choice').attr('href', '/result')
+      })
+    }
+    //console.log(pk)
+    var letter = $(`#${chosenId}`).data('letter')
+    //console.log(letter)
+    var mbti = $(`#${chosenId}`).data('mbti')
+    //console.log(mbti)
+    
+    $.ajax({
+      url: '/nextpage/',
+      dataType: "json",
+      type: "POST",
+      data: {
+        'pk': pk,
+        'letter': letter,
+        'mbti': mbti,
+      },
+      success: function (data) {
+        console.log(data)
+        $('#question').text(data['question'])
+        $('#choice1').text(data['question_ans1'])
+        $('#choice1').data('value', data['question_pk'])
+        $('#choice1').data('letter', data['question_letter1'])
+        $('#choice1').data('mbti', data['mbti'])
+        $('#choice2').text(data['question_ans2'])
+        $('#choice2').data('value', data['question_pk'])
+        $('#choice2').data('letter', data['question_letter2'])
+        $('#choice2').data('mbti', data['mbti'])
+        alert('succeeded!')
+      },
+      error: function (request, status, error) {
+        console.log('failed')
+        //var url = '{% url 'articles:result' %}'
+        //window.location.href = url
+      }
+    });
+  })
+</script>

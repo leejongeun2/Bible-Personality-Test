@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .models import Mbti, Type, Question
-
+from django.core import serializers
 
 # Create your views here.
 def index(request):
@@ -18,6 +18,7 @@ def index(request):
 @csrf_exempt
 def question(request):
     question = Question.objects.get(pk=1)
+    mbti = ''
     # pk = request.POST.get('pk')
     # # for question in question_list:
     # #     pk = question.pk
@@ -30,7 +31,13 @@ def question(request):
     # }
     # return JsonResponse(context)
     context = {
-        'question': question,
+        'question_pk': question.pk,
+        'question': question.question,
+        'question_ans1': question.answer1,
+        'question_letter1': question.answer1_letter,
+        'question_ans2': question.answer2,
+        'question_letter2': question.answer2_letter,
+        'mbti': mbti,
     }
     return render(request, 'articles/questiontest.html', context)
 
@@ -39,15 +46,32 @@ def question(request):
         
 @csrf_exempt
 def nextPage(request):
-    pk = request.POST.get('pk', None)
-    question = Question.objects.get(pk=pk)
-    data = {
-        'data': question,
-    }
-    return JsonResponse(data)
+    pk = request.POST.get('pk')
+    letter = request.POST.get('letter')
+    mbti = request.POST.get('mbti')
+    pk = int(pk) + 1
+    mbti += letter
+    # pk=1
+    if pk > 12:
+        context = {
+            'mbti': mbti,
+        }
+        return render(request, 'articles/result.html', context)
+    else:
+        question = Question.objects.get(pk=pk)
+        data = {
+            'question_pk': question.pk,
+            'question': question.question,
+            'question_ans1': question.answer1,
+            'question_ans2': question.answer2,
+            'question_letter1': question.answer1_letter,
+            'question_letter2': question.answer2_letter,
+            'mbti': mbti,
+        }
+        return JsonResponse(data)
 
-def result(request):
-    mbti = Mbti.objects.get(id=1).alphabet # model에서 id=1 alphabet 컬럼에서 데이터 가져오기(ex:'IEESSNTTFJPP')
+def result(request, mbti):
+    # mbti = Mbti.objects.get(id=1).alphabet # model에서 id=1 alphabet 컬럼에서 데이터 가져오기(ex:'IEESSNTTFJPP')
     types = Type.objects.all()
     
     first = {}
