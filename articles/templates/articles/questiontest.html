@@ -49,6 +49,7 @@
         },
         error: function (request, status, error) {
           console.log('finished')
+          mbti += letter
           window.location.href = `/result/${mbti}`
         }
       });

@@ -10,9 +10,6 @@ class Question(models.Model):
     answer2 = models.TextField(max_length=100)
     answer2_letter = models.CharField(max_length=1, blank=True, null=True) # E
 
-# mbti 모델 (alphabet컬럼에 선택지? 전부 받아오기)
-# hits 필요 없을듯?
-
 
 # 인물 모델
 class Type(models.Model):

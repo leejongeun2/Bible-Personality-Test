@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Mbti, Type, Question
+from .models import Type, Question
 # Register your models here.
 
 admin.site.register(Type)
