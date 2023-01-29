@@ -12,8 +12,7 @@ class Question(models.Model):
 
 # mbti 모델 (alphabet컬럼에 선택지? 전부 받아오기)
 # hits 필요 없을듯?
-class Mbti(models.Model):
-    alphabet = models.CharField(max_length=100)
+
 
 # 인물 모델
 class Type(models.Model):

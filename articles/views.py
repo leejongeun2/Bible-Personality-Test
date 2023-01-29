@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from .models import Mbti, Type, Question
+from .models import Type, Question
 from django.core import serializers
 
 # Create your views here.
