@@ -3,42 +3,56 @@
 {% block content %}
   <div class="container text-center">
     <div id="question">{{ question }}</div>
-    <button type="button" class="choice" id="choice1" value="{{question_pk}}">{{ question_ans1 }}</button>
-    <button type="button" class="choice" id="choice2" value="{{question_pk}}">{{ question_ans2 }}</button>
-    <button type="button" id="change_color">change</button>
+    <button type="button" class="choice" id="choice1" data-letter="{{ question_letter1 }}" data-mbti="{{ mbti }}" data-value="{{ question_pk }}">{{ question_ans1 }}</button>
+    <button type="button" class="choice" id="choice2" data-letter="{{ question_letter2 }}" data-mbti="{{ mbti }}" data-value="{{ question_pk }}">{{ question_ans2 }}</button>
   </div>
 {% endblock content %}
 {% comment %} <script src="{% static 'js/test.js' %}"></script> {% endcomment %}
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
 <script>
-  $('#change_color').click(function () {
-    var pk = $('.choice').val()
-    console.log(pk)
+  $('.choice').click(function (event) {
+    var chosenId = event.target.id
+    //console.log(chosenId)
+    var pk = $(`#${chosenId}`).data('value')
+    if (pk == 11){
+      $('button').click(function(){
+        $('.choice').attr('href', '/result')
+      })
+    }
+    //console.log(pk)
+    var letter = $(`#${chosenId}`).data('letter')
+    //console.log(letter)
+    var mbti = $(`#${chosenId}`).data('mbti')
+    //console.log(mbti)
+    
     $.ajax({
       url: '/nextpage/',
       dataType: "json",
       type: "POST",
       data: {
-        'pk': pk
+        'pk': pk,
+        'letter': letter,
+        'mbti': mbti,
       },
       success: function (data) {
         console.log(data)
         $('#question').text(data['question'])
         $('#choice1').text(data['question_ans1'])
-        $('#choice1').attr('value', data['question_pk'])
+        $('#choice1').data('value', data['question_pk'])
+        $('#choice1').data('letter', data['question_letter1'])
+        $('#choice1').data('mbti', data['mbti'])
         $('#choice2').text(data['question_ans2'])
-        $('#choice2').attr('value', data['question_pk'])
+        $('#choice2').data('value', data['question_pk'])
+        $('#choice2').data('letter', data['question_letter2'])
+        $('#choice2').data('mbti', data['mbti'])
         alert('succeeded!')
       },
       error: function (request, status, error) {
-        console.log('failed');
-        console.log(request)
-        console.log(status)
-        console.log(error)
+        console.log('failed')
+        //var url = '{% url 'articles:result' %}'
+        //window.location.href = url
       }
     });
-    //$('.choice1').text(question_ans1)
-    //$('.choice2').text(question_ans2)
   })
 </script>
