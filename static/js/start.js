@@ -5,6 +5,11 @@ const endPoint = 12;
 const select = [];
 
 
+// function pageResult(){
+//     window.location.href = '/result/'
+// }
+
+
 function calResult(){
     var pointArray = [
         { name: 'I', value: 0, key: 0}, //1
@@ -45,17 +50,23 @@ function calResult(){
         console.log(resultArray)
         let resultword = resultArray[0].name;
         return resultword;
-    }
+
+}
 
 
 
 function goResult(){
-    qna.style.display = "none";
-    result.style.display = "block";
-    // console.log(select);
+    // qna.style.display = "none";
+    // result.style.display = "block";
+    console.log(select);
+    // calResult();
+    window.location.href = '/result/'
     calResult();
-
 }
+
+
+
+
 
 function addAnswer(answerText, qIdx, idx){
     var a = document.querySelector('.answerBox');
