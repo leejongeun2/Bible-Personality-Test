@@ -2,30 +2,28 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/question.css' %}">
-<div class="container">
+  <link rel="stylesheet" href="{% static 'css/question.css' %}">
+  <div class="container">
     <div class="progress mt-5">
-        <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 75%; background-color: #B70048;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 75%; background-color: #B70048;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-   <div class="text-center mt-3">
-        <P class="main_font">10&nbsp/&nbsp12</P>
+    <div class="text-center mt-3">
+      <p class="main_font">10&nbsp/&nbsp12</p>
     </div>
     <div class="text-center">
-        <p class="my-5 pt-5 question">교회 수련회가 열린대! 하지만 아는 사람이 없는 나는?</p>
+      <p class="my-5 pt-5 question">교회 수련회가 열린대! 하지만 아는 사람이 없는 나는?</p>
     </div>
     <div class="text-center d-flex justify-content-center row mt-5 pt-5">
-        <div class="answer">
-            <p class="answer_p">아는 사람 하나도 없는데...다음에 간다고 한다.</p>
-        </div>
-        <div class="answer mt-5">
-            <p class="answer_p">교회 친구들도 많이 사귀고 재밌겠다!</p>
-        </div>
+      <div class="answer">
+        <p class="answer_p">아는 사람 하나도 없는데...다음에 간다고 한다.</p>
+      </div>
+      <div class="answer mt-5">
+        <p class="answer_p">교회 친구들도 많이 사귀고 재밌겠다!</p>
+      </div>
     </div>
-    <div class="qBox">
-    </div>
-    <div class="answerBox">
-    </div>
-</div>
-<script src="{% static 'js/data.js' %}"></script>
-<script src="{% static 'js/start.js' %}"></script>
+    <div class="qBox"></div>
+    <div class="answerBox"></div>
+  </div>
+  <script src="{% static 'js/data.js' %}"></script>
+  <script src="{% static 'js/start.js' %}"></script>
 {% endblock content %}
