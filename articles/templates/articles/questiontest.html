@@ -12,6 +12,9 @@
 
   <body>
     <div class="container text-center">
+      <div class="progress mx-auto mt-5">
+        <div class="progress-bar" role="progressbar" aria-label="Basic example" style="background-color: #B70048; border-radius: 20px; width: 8.3%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
       <div id="question">{{ question }}</div>
       <button type="button" class="choice" id="choice1" data-letter="{{ question_letter1 }}" data-mbti="{{ mbti }}" data-value="{{ question_pk }}">{{ question_ans1 }}</button>
       <button type="button" class="choice" id="choice2" data-letter="{{ question_letter2 }}" data-mbti="{{ mbti }}" data-value="{{ question_pk }}">{{ question_ans2 }}</button>
@@ -46,6 +49,8 @@
           $('#choice2').data('value', data['question_pk'])
           $('#choice2').data('letter', data['question_letter2'])
           $('#choice2').data('mbti', data['mbti'])
+          var progress = document.querySelector('.progress-bar');
+          progress.style.width = (100/12) * (pk+1) + '%';
         },
         error: function (request, status, error) {
           console.log('finished')
@@ -53,7 +58,9 @@
           window.location.href = `/result/${mbti}`
         }
       });
+
     })
+    
   </script>
 
 </html>
