@@ -62,6 +62,8 @@
           $('#choice2').data('value', data['question_pk'])
           $('#choice2').data('letter', data['question_letter2'])
           $('#choice2').data('mbti', data['mbti'])
+          var progress = document.querySelector('.progress-bar');
+          progress.style.width = (100/12) * (pk+1) + '%';
         },
         error: function (request, status, error) {
           console.log('finished')
@@ -73,7 +75,9 @@
           }, 5000)
         }
       });
+
     })
+    
   </script>
 
 </html>
