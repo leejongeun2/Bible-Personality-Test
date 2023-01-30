@@ -6,9 +6,9 @@ from django.db import models
 class Question(models.Model):
     question = models.TextField(max_length=100)
     answer1 = models.TextField(max_length=100)
-    answer1_letter = models.CharField(max_length=1, blank=True, null=True) # I
+    answer1_letter = models.CharField(max_length=1, blank=True, null=True)
     answer2 = models.TextField(max_length=100)
-    answer2_letter = models.CharField(max_length=1, blank=True, null=True) # E
+    answer2_letter = models.CharField(max_length=1, blank=True, null=True) 
 
 
 # 인물 모델
