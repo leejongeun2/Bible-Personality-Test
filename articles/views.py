@@ -3,7 +3,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .models import Type, Question
 
-
 # Create your views here.
 def index(request):
     context = {}
@@ -31,23 +30,18 @@ def nextPage(request):
     mbti = request.POST.get('mbti')
     pk = int(pk) + 1
     mbti += letter
-    try:
-        question = Question.objects.get(pk=pk)
-        data = {
-            'question_pk': question.pk,
-            'question': question.question,
-            'question_ans1': question.answer1,
-            'question_ans2': question.answer2,
-            'question_letter1': question.answer1_letter,
-            'question_letter2': question.answer2_letter,
-            'mbti': mbti,
-        }
-        return JsonResponse(data)
-    except:
-        data = {
-            'mbti': mbti,
-        }
-        return JsonResponse(mbti)
+    question = Question.objects.get(pk=pk)
+    data = {
+        'question_pk': question.pk,
+        'question': question.question,
+        'question_ans1': question.answer1,
+        'question_ans2': question.answer2,
+        'question_letter1': question.answer1_letter,
+        'question_letter2': question.answer2_letter,
+        'mbti': mbti,
+    }
+    return JsonResponse(data)
+        
 
 def result(request, mbti):
     types = Type.objects.all()
