@@ -11,9 +11,3 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
 }
-@media (max-width: 412px){
-    body {
-        max-width: 412px;
-        margin: auto;
-    }
-}
