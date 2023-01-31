@@ -2,25 +2,15 @@
 {% load static %}
 {% block content %}
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  <section id="main">
     <div class="d-flex row text-center justify-content-center">
-      <h1 class="index-title my-5">나와
+      <h2 class="index-title my-5">나와
         <span class="title-highlight">닮은</span>
-        성경 인물 테스트</h1>
+        성경 인물 테스트</h2>
       <img class="index-img my-2" src="{% static 'images/index_img.png' %}" alt="index page img">
       <div>
         <button class="index-btn my-5" type="button" onclick="location.href='{% url 'articles:question' %}'">시작하기</button>
       </div>
     </div>
-  </section>
-  <section id="qna">
-    <div class="progress mx-auto mt-5">
-      <div class="progress-bar" role="progressbar" aria-label="Basic example" style="background-color: #B70048; border-radius: 20px" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <div class="qBox"></div>
-    <div class="answerBox"></div>
-  </section>
-  
 {% comment %} 
   <script src="{% static 'js/data.js' %}"></script>
   <script src="{% static 'js/start.js' %}"></script> {% endcomment %}
