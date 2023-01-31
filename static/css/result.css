@@ -1,0 +1,13 @@
+.restart-btn {
+    /* border: 4px solid black; */
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    width: 30%;
+    padding: 20px;
+    /* font-size: 25px; */
+}
+.restart-btn:hover{
+    background-color: white;
+    color: black;
+}
