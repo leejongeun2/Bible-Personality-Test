@@ -1,6 +1,7 @@
 * {
-    background-color: #F8F6F3;
+    background-color: #ffe0bf;
 }
+
 .title-highlight {
     color: #B70048;
 }
@@ -24,3 +25,39 @@
 #result{
     display: none;
 }
+
+.move_ani {
+    position: relative;
+    animation: fadeInUp 1s;
+  }
+  
+  @-webkit-keyframes fadeInUp {
+    0%{
+        transform: translate3d(0, 40%, 0);
+      opacity:0;
+      
+    }
+    to{
+        transform: translate3d(0,0%,0);
+      opacity:1;
+      
+    }
+  }
+
+  .bible_title{
+    -webkit-animation: 1.5s ease 0s normal forwards 1 fadein;
+    animation: 1.5s ease 0s normal forwards 1 fadein;
+  }
+
+  @keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
