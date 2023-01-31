@@ -22,3 +22,10 @@
 p {
     margin-bottom: 0px !important;
 }
+@media (max-width: 412px){
+    button {
+        /* stress */
+        width: auto;
+        height: auto;
+    }
+}

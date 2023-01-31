@@ -15,6 +15,9 @@
     /* -webkit-animation: spin 2s linear infinite; */
     /* animation: spin 2s linear infinite; */
 }
+.loading-gif {
+    border-radius: 200px;
+}
 
 /* @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }

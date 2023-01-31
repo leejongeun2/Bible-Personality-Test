@@ -19,6 +19,7 @@ class Type(models.Model):
     personality = models.TextField(max_length=100, blank=True)
     like = models.TextField(max_length=50, blank=True)
     dislike = models.TextField(max_length=50, blank=True)
+    
     # good_match & bad_match 이미지 링크 넣어서 나중에 불러오기
     good_match_img = models.ImageField(upload_to='images', null=True, blank=True)
     good_match = models.CharField(max_length=10, blank=True)
