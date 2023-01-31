@@ -1,8 +1,35 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <section id="result">
-    <div class="d-flex row text-center justify-content-center">
+<link rel="stylesheet" href="{% static 'css/result.css' %}">
+  <div class="container text-center my-5" id="result">
+    <div class="text-center">
+      <h2 class="my-5">{{ result_type.verse }}말가나안 정복의 지도자</h2>
+      <h3 class="my-5">{{ result_type.person }}여호수와</h3>
+      <div class="my-5">{{ result_type.image }}임시이미지</div>
+      <h4 class="my-5 w-50 m-auto text-start">{{ result_type.personality }}여호수아는 강인한 성격이예요.
+        냉정해보일 수 있지만 리더십있고 통솔력있습니다.
+        좋아하는 것 싫어하는 것</h4>
+      <div class="d-flex justify-content-center">
+        <div class="mx-5">
+          <h1 class="mb-3">잘맞는 유형</h1>
+          <div class="mb-4">{{ result_type.good_match_img }}임시이미지</div>
+          <h5>{{ result_type.good_match}}모세</h5>
+        </div>
+        <div class="mx-5">
+          <h1 class="mb-3">안맞는 유형</h1>
+          <div class="mb-4">{{ result_type.bad_match_img }}임시이미지</div>
+          <h5>{{ result_type.bad_match}}에스더</h5>
+        </div>
+      </div>
+      <button class="restart-btn my-4" onclick="location.href='{% url 'articles:question' %}'">다시하기</button>
+      <div class="my-3">
+        <h4>공유하기</h4>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox_iwnx"></div>
+      </div>
+    </div>
+    {% comment %} <div class="d-flex row text-center justify-content-center">
       <h1 class="index-title my-5">당신의
         <span class="title-highlight">결과</span>
         는?</h1>
@@ -12,16 +39,14 @@
       <div class="resultDesc">{{result_type.verse}}</div>
       <div>
         <button class="index-btn my-5" type="button">공유하기</button>
-        
+
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
         <div class="addthis_inline_share_toolbox_iwnx"></div>
-            
+
       </div>
-    </div>
-  </section>
+    </div> {% endcomment %}
+  </div>
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
-  <script script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-639882a381a3781a"></script>
-
-
+  <script script="script" type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-639882a381a3781a"></script>
 
 {% endblock content %}
