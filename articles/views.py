@@ -21,7 +21,7 @@ def question(request):
         'question_letter2': question.answer2_letter,
         'mbti': mbti,
     }
-    return render(request, 'articles/questiontest.html', context)
+    return render(request, 'articles/question.html', context)
         
 @csrf_exempt
 def nextPage(request):
