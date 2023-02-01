@@ -61,12 +61,7 @@ else:
         AWS_REGION,
     )
 
-ALLOWED_HOSTS = [
-    # 안되면 *로하기
-    "biblembti-env.eba-wm4qcknw.ap-northeast-2.elasticbeanstalk.com",
-    "127.0.0.1",
-    "localhost",
-]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
