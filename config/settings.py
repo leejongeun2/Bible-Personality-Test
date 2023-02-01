@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,15 +26,56 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+if DEBUG: 
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = BASE_DIR / "media"
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+else:   
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("DATABASE_NAME"), # .env 파일에 value 작성
+            "USER": "postgres",
+            "PASSWORD": os.getenv("DATABASE_PASSWORD"), # .env 파일에 value 작성
+            "HOST": os.getenv("DATABASE_HOST"), # .env 파일에 value 작성
+            "PORT": "5432",
+        }
+    }
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+
+    AWS_REGION = "ap-northeast-2"
+    AWS_S3_CUSTOM_DOMAIN = "%s.s3.%s.amazonaws.com" % (
+        AWS_STORAGE_BUCKET_NAME,
+        AWS_REGION,
+    )
+
+ALLOWED_HOSTS = [
+    # 안되면 *로하기
+    "biblembti-env.eba-wm4qcknw.ap-northeast-2.elasticbeanstalk.com",
+    "127.0.0.1",
+    "localhost",
+]
 
 # Application definition
 
 INSTALLED_APPS = [
     # INTERNAL_APPS
     'articles',
+    
+    # aws
+    'storages',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,10 +120,21 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "biblembti", # 코드 블럭 아래 이미지 참고하여 입력
+        "USER": "postgres",
+        "PASSWORD": "biblembti", # 데이터베이스 생성 시 작성한 패스워드
+        "HOST": "bible-mbti.cnnss6pyzwqn.ap-northeast-2.rds.amazonaws.com", # 코드 블럭 아래 이미지 참고하여 입력
+        "PORT": "5432",
     }
 }
 
@@ -129,3 +183,16 @@ STATIC_ROOT = 'staticfiles'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# # 아래 코드 추가
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+# AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+# AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+
+# AWS_REGION = "ap-northeast-2"
+# AWS_S3_CUSTOM_DOMAIN = "%s.s3.%s.amazonaws.com" % (
+#     AWS_STORAGE_BUCKET_NAME,
+#     AWS_REGION,
+# )
