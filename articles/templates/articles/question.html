@@ -55,7 +55,7 @@
           'mbti': mbti
         },
         success: function (data) {
-          console.log(data)
+          console.log('success')
           var progress = document.querySelector('.progress-bar');
           progress.style.width = (100 / 12) * (pk + 1) + '%';
           $('#question-progress').text(data['question_pk'])
