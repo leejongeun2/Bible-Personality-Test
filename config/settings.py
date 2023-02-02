@@ -32,12 +32,12 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    # EXTERNAL_APPS
-    'django_bootstrap5',   
     # INTERNAL_APPS
     'articles',
     # aws
     'storages',
+    'django_bootstrap5',   
+    'imagekit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
