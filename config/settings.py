@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    # EXTERNAL_APPS
+    'django_bootstrap5',   
     # INTERNAL_APPS
     'articles',
     # aws
