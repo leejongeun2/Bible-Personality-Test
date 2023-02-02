@@ -176,6 +176,6 @@ else:
             "USER": "postgres",
             "PASSWORD": os.getenv("DATABASE_PASSWORD"), # .env 파일에 value 작성
             "HOST": os.getenv("DATABASE_HOST"), # .env 파일에 value 작성
-            "PORT": "5433",
+            "PORT": "5432",
         }
     }
