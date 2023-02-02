@@ -68,10 +68,8 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     # INTERNAL_APPS
     'articles',
-    
     # aws
     'storages',
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
