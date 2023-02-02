@@ -86,16 +86,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "biblembti", # 코드 블럭 아래 이미지 참고하여 입력
-        "USER": "postgres",
-        "PASSWORD": "biblembti", # 데이터베이스 생성 시 작성한 패스워드
-        "HOST": "bible-mbti.cnnss6pyzwqn.ap-northeast-2.rds.amazonaws.com", # 코드 블럭 아래 이미지 참고하여 입력
-        "PORT": "5432",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "biblembti", # 코드 블럭 아래 이미지 참고하여 입력
+#         "USER": "postgres",
+#         "PASSWORD": "biblembti", # 데이터베이스 생성 시 작성한 패스워드
+#         "HOST": "bible-mbti.cnnss6pyzwqn.ap-northeast-2.rds.amazonaws.com", # 코드 블럭 아래 이미지 참고하여 입력
+#         "PORT": "5432",
+#     }
+# }
 
 
 # Password validation
