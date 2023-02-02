@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     # INTERNAL_APPS
     'articles',
-    # aws
+    # AWS
     'storages',
     'django_bootstrap5',   
     'imagekit',
