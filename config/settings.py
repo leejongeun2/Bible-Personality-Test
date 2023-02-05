@@ -146,7 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == "True"
 
-if DEBUG == "True": 
+if DEBUG: 
     MEDIA_URL = "/media/"
     MEDIA_ROOT = BASE_DIR / "media"
     DATABASES = {
