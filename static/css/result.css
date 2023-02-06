@@ -25,8 +25,37 @@ body{
         color: black;
     }
     .p_highlight{
-        color: #B70048; 
+        color: #B70048;
+        
     }
+
+    .good_bad{
+        width:160px;
+        height:140px;
+        margin-left:2px;
+        margin-right:2px;
+    }
+    .personality{
+       font-size:15px;
+        
+    }
+    .good_bad_font{
+        font-size:15px;
+        
+    }
+    .end_t{
+        font-size:14px;
+    }
+    .p_highlight_2{
+         
+        font-size:20px;
+        
+    }
+
+
+   
+
+    
 }
 /* 데스크탑 */
 @media (min-width: 420px){
@@ -66,8 +95,17 @@ body{
     .good_bad{
         width:320px;
         height:280px;
+        
     }
-    
+    .good_bad_font{
+        font-size:20px;
+        
+    }
+    .p_highlight_2{
+         
+        font-size:30px;
+        
+    }
 }
 
 
