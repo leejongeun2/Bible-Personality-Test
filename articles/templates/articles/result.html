@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/result.css' %}">
-  <div class="container text-center my-5" id="result">
+  <div class="container text-center" id="result">
     <div class="text-center">
       <h5 class="index-title my-4">나와
         <span class="title-highlight">닮은</span>
@@ -11,15 +11,16 @@
       <h4 class="my-3 ">{{ result_type.verse }}</h4>
       <img class="mb-4 w-50 rounded-5" src="{{ result_type.image.url }}" alt="">
       <div class="d-flex justify-content-center">
-        <h4 class="personality my-5 text-center"><div class="text-start"><span class="p_highlight">"</span></div>{% autoescape off %}{{ result_type.personality}}{% endautoescape %}
+        
+        <h4 class="personality  text-center"><div class="text-start"><span class="p_highlight">"</span><p class="p_highlight text-center">나의 성격은...?</p></div>{% autoescape off %}{{ result_type.personality}}{% endautoescape %}
           <div class="text-end"><span class="p_highlight ">"</span></div></h4>
       </div>
       {% comment %} <div class="my-5">{{ result_type.image }}</div> {% endcomment %}
       
       {% comment %} <h4 class="my-5 w-50 m-auto text-start">{{ result_type.personality }}</h4> {% endcomment %}
-      <div class="d-flex justify-content-evenly mx-5 px-5 my-4">
-        <div> 좋아하는 것 : {{result_type.like}}</div>
-        <div>싫어하는 것 : {{result_type.dislike}}</div>
+      <div class="good_bad_font ">
+        <div class="my-3"> <span class="p_highlight_2">좋아요😍</span><br>{{result_type.like}}</div>
+        <div> <span class="p_highlight_2">싫어요🤢</span> <br>{{result_type.dislike}}</div>
       </div>
       <hr class="line_under">
       <div class="d-flex justify-content-center my-4">
@@ -27,13 +28,13 @@
           <h2 class="mb-3">잘맞는 유형</h2>
           {% comment %} <div class="mb-4">{{ result_type.good_match_img.url }}임시이미지</div> {% endcomment %}
           <img class="good_bad mb-2 rounded-5" src="{{ result_type.good_match_img.url }}" alt="">
-          <h5>{{ result_type.good_match}}</h5>
+          <h5 class="end_t">{{ result_type.good_match}}</h5>
         </div>
-        <div class="mx-5">
+        <div class="mx-3">
           <h2 class="mb-3">안맞는 유형</h2>
           {% comment %} <div class="mb-4">{{ result_type.bad_match_img }}임시이미지</div> {% endcomment %}
           <img class="good_bad mb-2 rounded-5" src="{{ result_type.bad_match_img.url }}" alt="">
-          <h5>{{ result_type.bad_match}}</h5>
+          <h5 class="end_t">{{ result_type.bad_match}}</h5>
         </div>
       </div>
       <button class="restart-btn" onclick="location.href='{% url 'articles:question' %}'">다시하기</button>
