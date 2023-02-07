@@ -11,22 +11,26 @@ body{
 @media (min-width:350px) and (max-width: 420px){
 
     /* 데이터 완성되면 넣어보기 */
+    .resultimg {
+        width: 60%;
+    }
     .restart-btn {
         /* border: 4px solid black; */
         background-color: black;
         color: white;
         border-radius: 15px;
-        width: 30%;
+        width: 50%;
         padding: 20px;
         /* font-size: 25px; */
     }
-    .restart-btn:hover{
-        background-color: white;
+    /* .restart-btn:hover{
+        backgrou dnd-color: white;
         color: black;
-    }
+    } */
     .p_highlight{
         color: #B70048;
-        
+        font-size:15px;
+        font-weight:1000;
     }
 
     .good_bad{
@@ -36,7 +40,7 @@ body{
         margin-right:2px;
     }
     .personality{
-       font-size:15px;
+       font-size:14px;
         
     }
     .good_bad_font{
@@ -46,12 +50,7 @@ body{
     .end_t{
         font-size:14px;
     }
-    .p_highlight_2{
-         
-        font-size:20px;
-        
-    }
-
+  
 
    
 
