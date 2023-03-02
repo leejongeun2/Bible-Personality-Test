@@ -4,4 +4,4 @@
 * 배포 URL: http://biblembti-env.eba-wm4qcknw.ap-northeast-2.elasticbeanstalk.com/
 
 ### ERD
-![성경인물 성격테스트 drawio (2)](https://user-images.githubusercontent.com/108647681/222339124-50b75c7d-23c3-410f-aeec-2a8ebdcd29b2.png)
+![성경인물 성격테스트 drawio (2)](https://user-images.githubusercontent.com/108647681/222432291-8db27b4d-bbe6-4239-b0d1-72463662c861.png)
