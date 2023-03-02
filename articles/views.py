@@ -12,7 +12,7 @@ def index(request):
 def question(request):
     question = Question.objects.get(pk=1)
     mbti = ''
-    context = {
+    context = { # 스크립트에서 쓸 수 있도록 보냄
         'question_pk': question.pk,
         'question': question.question,
         'question_ans1': question.answer1,
