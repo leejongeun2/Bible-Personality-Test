@@ -41,12 +41,12 @@
       var progress = document.querySelector('.progress-bar');
       progress.style.width = (100 / 12) * (pk + 1) + '%';
       var chosenId = event.target.id
-      var pk = $(`#${chosenId}`).data('value')
-      var letter = $(`#${chosenId}`).data('letter')
-      var mbti = $(`#${chosenId}`).data('mbti')
+      var pk = $(`#${chosenId}`).data('value') // pk
+      var letter = $(`#${chosenId}`).data('letter') // 답변에 해당하는 알파벳
+      var mbti = $(`#${chosenId}`).data('mbti') // mbti 합쳐진것..?
 
       $.ajax({
-        url: '/nextpage/',
+        url: '/nextpage/', // 클릭할때마다 url에 해당하는 views가 작동됨
         dataType: "json",
         type: "POST",
         data: {

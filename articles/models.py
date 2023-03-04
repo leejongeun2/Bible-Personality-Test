@@ -4,11 +4,11 @@ from django.db import models
 
 # 질문 모델
 class Question(models.Model):
-    question = models.TextField(max_length=100)
-    answer1 = models.TextField(max_length=100)
-    answer1_letter = models.CharField(max_length=1, blank=True, null=True)
-    answer2 = models.TextField(max_length=100)
-    answer2_letter = models.CharField(max_length=1, blank=True, null=True) 
+    question = models.TextField(max_length=100) # 질문
+    answer1 = models.TextField(max_length=100) # 답변1
+    answer1_letter = models.CharField(max_length=1, blank=True, null=True) # 답변에 따른 알파벳
+    answer2 = models.TextField(max_length=100) # 답변2
+    answer2_letter = models.CharField(max_length=1, blank=True, null=True) # 답변에 따른 알파벳
 
 
 # 인물 모델
